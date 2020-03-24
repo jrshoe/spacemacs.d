@@ -22,7 +22,9 @@
      (spacemacs-modeline :packages
                          spaceline
                          vim-powerline)
+     spacemacs-project
      ;; basic
+     better-defaults
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-help-tooltip nil
@@ -31,6 +33,7 @@
                       syntax-checking-enable-tooltips nil)
      ivy
      git
+     ;; lang
      emacs-lisp
      racket
      ;; local
@@ -68,8 +71,8 @@
                          spacemacs-light)
    dotspacemacs-mode-line-theme '(vim-powerline :separator wave :separator-scale 1.5)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 16.0
+   dotspacemacs-default-font '("Consolas"
+                               :size 18.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -110,7 +113,9 @@
    dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-frame-title-format ""
+   dotspacemacs-frame-title-format '((:eval (if (buffer-file-name)
+                                               (abbreviate-file-name (buffer-file-name))
+                                             "%b")))
    dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup 'all
    dotspacemacs-zone-out-when-idle nil
@@ -128,6 +133,9 @@
   (setq custom-file "~/.spacemacs.d/custom.el")
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
+
+  ;; racket-program
+  (setq racket-program "/Applications/Racket/bin/racket")
   )
 
 (defun dotspacemacs/user-load ()
@@ -150,4 +158,13 @@
   (add-hook 'racket-mode-hook #'racket-mode-add-pretty-symbols)
   ;; paren-face
   (global-paren-face-mode)
+  ;; evil in racket
+  (add-hook 'racket-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+  ;; enable xp-mode
+  (require 'racket-xp)
+  (add-hook 'racket-mode-hook #'racket-xp-mode)
+  ;; enable smartparens-mode
+  (add-hook 'racket-mode-hook #'smartparens-mode)
+  ;; disable racket-mode postip
+  (delete #'racket-show-pos-tip racket-show-functions)
   )
