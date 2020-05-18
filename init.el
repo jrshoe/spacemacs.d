@@ -36,6 +36,7 @@
      ;; lang
      emacs-lisp
      racket
+     (clojure :variables clojure-enable-fancify-symbols t)
      ;; local
      )
    dotspacemacs-additional-packages '(paren-face)
@@ -146,7 +147,7 @@
         '(
           (ns-transparent-titlebar . t)
           ;;(ns-appearance . dark)
-          (alpha . 98)))
+          (alpha . 99)))
   ;; paren-face
   (add-hook 'racket-mode-hook #'paren-face-mode)
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
@@ -165,6 +166,9 @@
   (add-hook 'racket-mode-hook #'racket-xp-mode)
   ;; enable smartparens-mode
   (add-hook 'racket-mode-hook #'smartparens-mode)
+  (add-hook 'clojure-mode-hook #'smartparens-mode)
   ;; disable racket-mode postip
   (delete #'racket-show-pos-tip racket-show-functions)
+  ;; maximize frame at startup
+  (toggle-frame-maximized)
   )
