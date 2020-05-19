@@ -33,7 +33,7 @@
                       syntax-checking-enable-tooltips nil)
      ivy
      git
-     ;; lang
+     ;; langs
      emacs-lisp
      racket
      (clojure :variables clojure-enable-fancify-symbols t)
@@ -126,16 +126,18 @@
   (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
+  ;; mirror repo
   (setq configuration-layer-elpa-archives
         '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "http://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  ;; fringe
   (fringe-mode 0)
+  ;; custom file generation
   (setq custom-file "~/.spacemacs.d/custom.el")
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
-
-  ;; racket-program
+  ;; racket-program bin
   (setq racket-program "/Applications/Racket/bin/racket")
   )
 
@@ -143,32 +145,49 @@
   )
 
 (defun dotspacemacs/user-config ()
+  ;; transparency
   (setq default-frame-alist
         '(
           (ns-transparent-titlebar . t)
           ;;(ns-appearance . dark)
           (alpha . 99)))
   ;; paren-face
-  (add-hook 'racket-mode-hook #'paren-face-mode)
-  (add-hook 'racket-mode-hook #'prettify-symbols-mode)
+  (global-paren-face-mode)
+  ;; maximize frame at startup
+  (toggle-frame-maximized)
+  ;; langs setup
+  (emacs-lisp-mode/user-config)
+  (racket-mode/user-config)
+  (clojure-mode/user-config)
+  )
+
+(defun emacs-lisp-mode/user-config ()
+  "emacs lisp major mode configs collection"
+  ;; enable smartparens-mode
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+  )
+
+(defun racket-mode/user-config ()
+  "racket major mode configs collection"
   ;; prettify-symbols-mode
   (defun racket-mode-add-pretty-symbols ()
     "make some word or string show as pretty Unicode symbols"
-    (setq prettify-symbols-alist '(("lambda" . 955)))
-    )
+    (setq prettify-symbols-alist '(("lambda" . 955))))
   (add-hook 'racket-mode-hook #'racket-mode-add-pretty-symbols)
-  ;; paren-face
-  (global-paren-face-mode)
+  (add-hook 'racket-mode-hook #'prettify-symbols-mode)
   ;; evil in racket
   (add-hook 'racket-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;; enable xp-mode
   (require 'racket-xp)
   (add-hook 'racket-mode-hook #'racket-xp-mode)
-  ;; enable smartparens-mode
-  (add-hook 'racket-mode-hook #'smartparens-mode)
-  (add-hook 'clojure-mode-hook #'smartparens-mode)
   ;; disable racket-mode postip
   (delete #'racket-show-pos-tip racket-show-functions)
-  ;; maximize frame at startup
-  (toggle-frame-maximized)
+  ;; enable smartparens-mode
+  (add-hook 'racket-mode-hook #'smartparens-mode)
+  )
+
+(defun clojure-mode/user-config ()
+  "clojure major mode configs collection"
+  ;; enable smartparens-mode
+  (add-hook 'clojure-mode-hook #'smartparens-mode)
   )
