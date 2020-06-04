@@ -37,6 +37,8 @@
      emacs-lisp
      racket
      (clojure :variables clojure-enable-fancify-symbols t)
+     (haskell :variables haskell-completion-backend 'ghci)
+     coq
      ;; local
      )
    dotspacemacs-additional-packages '(paren-face)
@@ -72,7 +74,7 @@
                          spacemacs-light)
    dotspacemacs-mode-line-theme '(vim-powerline :separator wave :separator-scale 1.5)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Consolas"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 18.0
                                :weight normal
                                :width normal)
