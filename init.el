@@ -33,6 +33,8 @@
                       syntax-checking-enable-tooltips nil)
      ivy
      git
+     (version-control :variables
+                      version-control-global-margin t)
      ;; langs
      emacs-lisp
      racket
@@ -134,7 +136,7 @@
           ("org-cn"   . "http://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   ;; fringe
-  (fringe-mode 0)
+  ;; (fringe-mode 0)
   ;; custom file generation
   (setq custom-file "~/.spacemacs.d/custom.el")
   (unless (file-exists-p custom-file)
