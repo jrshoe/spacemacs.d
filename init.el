@@ -48,6 +48,7 @@
    dotspacemacs-excluded-packages '(
                                     ;; spacemacs-modeline
                                     doom-modeline
+                                    vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
 
