@@ -144,6 +144,8 @@
     (write-region "" nil custom-file))
   ;; racket-program bin
   (setq racket-program "/Applications/Racket/bin/racket")
+  ;; coq
+  (setq coq-compile-before-require 't)
   )
 
 (defun dotspacemacs/user-load ()
