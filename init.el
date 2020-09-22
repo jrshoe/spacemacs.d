@@ -39,7 +39,7 @@
      emacs-lisp
      racket
      (clojure :variables clojure-enable-fancify-symbols t)
-     (haskell :variables haskell-completion-backend 'ghci)
+     (haskell :variables haskell-completion-backend 'dante)
      coq
      ;; local
      )
