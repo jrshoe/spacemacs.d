@@ -42,7 +42,7 @@
      (haskell :variables haskell-completion-backend 'dante)
      coq
      ;; agda-mode locate
-     (agda :variables agda-mode-path "/Users/shawn/.cabal/store/ghc-8.8.4/Agd-2.6.1.1-b021fa78/share/emacs-mode/agda2.el")
+     (agda :variables agda-mode-path (shell-command-to-string "agda-mode locate"))
      ;; local
      )
    dotspacemacs-additional-packages '(paren-face)
