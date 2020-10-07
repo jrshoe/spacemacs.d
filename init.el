@@ -145,10 +145,12 @@
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
   ;; racket-program bin
-  (setq racket-program "/Applications/Racket/bin/racket")
+  (setq racket-program "/usr/local/bin/racket")
   ;; coq
   (setq coq-compile-before-require 't)
   (setq coq-diffs 'removed)
+  ;; for cabal
+  (setq exec-path (append exec-path '("~/.cabal/bin")))
   )
 
 (defun dotspacemacs/user-load ()
