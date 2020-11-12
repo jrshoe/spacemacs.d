@@ -41,8 +41,9 @@
      (clojure :variables clojure-enable-fancify-symbols t)
      (haskell :variables haskell-completion-backend 'dante)
      coq
+     ott
      ;; agda-mode locate
-     (agda :variables agda-mode-path (shell-command-to-string "agda-mode locate"))
+     ;; (agda :variables agda-mode-path (shell-command-to-string "agda-mode locate"))
      ;; local
      )
    dotspacemacs-additional-packages '(paren-face)
