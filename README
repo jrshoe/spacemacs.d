@@ -1,11 +1,5 @@
-install guide:
-$ git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
-$ git clone https://github.com/xuuexu/spacemacs.d ~/.spacemacs.d
-$ emacs
-
-however, installing some dependencies brings me lots of trouble, I do have plan to write a script to reslove some missing binary files.
-
 - Haskell : ghcup -> cabal, stack, ghc (https://develop.spacemacs.org/layers/+lang/haskell/README.html#dependencies)
 - Coq : brew -> coqtop
 - Agda : cabal -> Agda (https://develop.spacemacs.org/layers/+lang/agda/README.html#agda)
 - Racket : brew -> racket, raco -> drracket
+- Ott : opam -> ott
