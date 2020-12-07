@@ -122,9 +122,7 @@
    dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-frame-title-format '((:eval (if (buffer-file-name)
-                                               (abbreviate-file-name (buffer-file-name))
-                                             "%b")))
+   dotspacemacs-frame-title-format "%a"
    dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup 'all
    dotspacemacs-zone-out-when-idle nil
