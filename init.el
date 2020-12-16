@@ -81,7 +81,7 @@
    dotspacemacs-mode-line-theme '(vim-powerline :separator wave :separator-scale 1.5)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 18.0
+                               :size 14.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
