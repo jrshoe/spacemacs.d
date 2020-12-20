@@ -19,9 +19,7 @@
                                )
      (spacemacs-misc :packages
                      dumb-jump)
-     (spacemacs-modeline :packages
-                         spaceline
-                         vim-powerline)
+     taoline
      spacemacs-project
      ;; basic
      better-defaults
@@ -76,12 +74,11 @@
    dotspacemacs-new-empty-buffer-major-mode 'text-mode
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
-   dotspacemacs-mode-line-theme '(vim-powerline :separator wave :separator-scale 1.5)
+   dotspacemacs-themes '(tao-yang)
+   dotspacemacs-mode-line-theme 'vanilla
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14.0
+                               :size 12.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -150,6 +147,8 @@
   (setq coq-diffs 'removed)
   ;; for cabal
   (setq exec-path (append exec-path '("~/.cabal/bin")))
+  ;; tao theme
+  (setq tao-theme-use-sepia nil)
   )
 
 (defun dotspacemacs/user-load ()
