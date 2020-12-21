@@ -190,10 +190,14 @@
            ))
   ;; step1 : set mode
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
+  (add-hook 'racket-repl-mode-hook #'prettify-symbols-mode)
   ;; step2 : set so-called buffer-local alist
   (add-hook 'racket-mode-hook (lambda ()
                                 (prettify-set)
                                 (modify-syntax-entry ?_ ".")))
+  (add-hook 'racket-repl-mode-hook (lambda ()
+                                     (prettify-set)
+                                     (modify-syntax-entry ?_ ".")))
   ;; evil in racket
   (add-hook 'racket-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;; enable xp-mode
