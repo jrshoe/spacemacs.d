@@ -151,6 +151,7 @@
   (setq tao-theme-use-sepia nil)
   ;; load-path
   (load-file (expand-file-name ".spacemacs.d/utils/prettify-utils.el" user-home-directory))
+  (load-file (expand-file-name ".spacemacs.d/utils/prettify-redex.el" user-home-directory))
   )
 
 (defun dotspacemacs/user-load ()
@@ -182,27 +183,11 @@
 (defun racket-mode/user-config ()
   "racket major mode configs collection"
   ;; symbols
-  (require 'prettify-utils)
+  ;; (require 'prettify-utils)
   (defun prettify-set ()
     (setq prettify-symbols-alist
-		      (prettify-utils-generate
-		       ("lambda"	"λ")
-           ("tau"     "τ")
-           ("psi"     "ψ")
-           ("Psi"     "Ψ")
-           ("gamma"   "γ")
-           ("Gamma"   "Γ")
-		       ("|>"		"▷")
-		       ("<|"		"◁")
-		       ("->>"		"↠")
-		       ("->"		"→")
-		       ("<-"		"←")
-		       ("=>"		"⇒")
-		       ("<="		"≤")
-		       (">="		"≥")
-           )))
-  ;; (setq prettify-symbols-alist
-  ;;       '(("yy" . (?y (tr . Bc) 1645 (br . cr) ?i)))))
+          prettify-redex-alist
+           ))
   ;; step1 : set mode
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
   ;; step2 : set so-called buffer-local alist
