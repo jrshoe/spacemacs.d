@@ -149,6 +149,8 @@
   (setq exec-path (append exec-path '("~/.cabal/bin")))
   ;; tao theme
   (setq tao-theme-use-sepia nil)
+  ;; load-path
+  (load-file (expand-file-name ".spacemacs.d/utils/prettify-utils.el" user-home-directory))
   )
 
 (defun dotspacemacs/user-load ()
@@ -179,12 +181,25 @@
 
 (defun racket-mode/user-config ()
   "racket major mode configs collection"
-  ;; prettify-symbols-mode
-  (defun racket-mode-add-pretty-symbols ()
-    "make some word or string show as pretty Unicode symbols"
-    (setq prettify-symbols-alist '(("lambda" . 955))))
-  (add-hook 'racket-mode-hook #'racket-mode-add-pretty-symbols)
+  ;; symbols
+  (require 'prettify-utils)
+  (defun prettify-set ()
+    (setq prettify-symbols-alist
+		      (prettify-utils-generate
+		       ("lambda"	"λ")
+		       ("|>"		"▷")
+		       ("<|"		"◁")
+		       ("->>"		"↠")
+		       ("->"		"→")
+		       ("<-"		"←")
+		       ("=>"		"⇒")
+		       ("<="		"≤")
+		       (">="		"≥")
+           )))
+  ;; step1 : set mode
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
+  ;; step2 : set so-called buffer-local alist
+  (add-hook 'racket-mode-hook #'prettify-set)
   ;; evil in racket
   (add-hook 'racket-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;; enable xp-mode
