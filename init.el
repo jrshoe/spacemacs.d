@@ -187,6 +187,11 @@
     (setq prettify-symbols-alist
 		      (prettify-utils-generate
 		       ("lambda"	"λ")
+           ("tau"     "τ")
+           ("psi"     "ψ")
+           ("Psi"     "Ψ")
+           ("gamma"   "γ")
+           ("Gamma"   "Γ")
 		       ("|>"		"▷")
 		       ("<|"		"◁")
 		       ("->>"		"↠")
@@ -196,10 +201,14 @@
 		       ("<="		"≤")
 		       (">="		"≥")
            )))
+  ;; (setq prettify-symbols-alist
+  ;;       '(("yy" . (?y (tr . Bc) 1645 (br . cr) ?i)))))
   ;; step1 : set mode
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
   ;; step2 : set so-called buffer-local alist
-  (add-hook 'racket-mode-hook #'prettify-set)
+  (add-hook 'racket-mode-hook (lambda ()
+                                (prettify-set)
+                                (modify-syntax-entry ?_ ".")))
   ;; evil in racket
   (add-hook 'racket-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
   ;; enable xp-mode
