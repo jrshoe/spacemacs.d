@@ -15,7 +15,7 @@
                                hide-comnt
                                hl-anything
                                highlight-numbers
-                               highlight-parentheses
+                               ;; highlight-parentheses
                                )
      (spacemacs-misc :packages
                      dumb-jump)
@@ -141,7 +141,7 @@
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
   ;; racket-program bin
-  (setq racket-program "/usr/local/bin/racket")
+  (setq racket-program (shell-command-to-string "which racket"))
   ;; coq
   (setq coq-compile-before-require 't)
   (setq coq-diffs 'removed)
@@ -207,6 +207,8 @@
   (setq racket-show-functions '(racket-show-echo-area))
   ;; enable smartparens-mode
   (add-hook 'racket-mode-hook #'smartparens-mode)
+  ;; enable paren-face
+  (add-hook 'racket-mode-hook #'paren-face-mode)
   )
 
 (defun clojure-mode/user-config ()
