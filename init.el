@@ -11,6 +11,7 @@
      ;; base
      spacemacs-navigation
      spacemacs-evil
+     spacemacs-editing
      (spacemacs-editing-visual :packages
                                hide-comnt
                                hl-anything
@@ -44,7 +45,7 @@
      ;; (agda :variables agda-mode-path (shell-command-to-string "agda-mode locate"))
      ;; local
      )
-   dotspacemacs-additional-packages '(paren-face)
+   dotspacemacs-additional-packages '(paren-face evil-smartparens)
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
                                     ;; spacemacs-modeline
@@ -112,7 +113,7 @@
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    dotspacemacs-smart-closing-parenthesis t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-enable-server nil
@@ -173,6 +174,8 @@
   (racket-mode/user-config)
   (clojure-mode/user-config)
   (coq-mode/user-config)
+  ;; evil-smartparens
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   )
 
 (defun emacs-lisp-mode/user-config ()
