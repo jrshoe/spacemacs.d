@@ -204,7 +204,7 @@
   (require 'racket-xp)
   (add-hook 'racket-mode-hook #'racket-xp-mode)
   ;; disable racket-mode postip
-  (delete #'racket-show-pos-tip racket-show-functions)
+  (setq racket-show-functions '(racket-show-echo-area))
   ;; enable smartparens-mode
   (add-hook 'racket-mode-hook #'smartparens-mode)
   )
