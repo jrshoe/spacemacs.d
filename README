@@ -1,3 +1,13 @@
+Usage:
+- Average Haskell Programming
+- Average Racekt Programming
+- Average Clojure Programming
+- Coq Proof Assisant
+- Agda Proof Assisant
+- PLT Redex Model
+- Ott Model
+
+Dependencies:
 - Haskell : ghcup -> cabal, stack, ghc (https://develop.spacemacs.org/layers/+lang/haskell/README.html#dependencies)
 - Coq : brew -> coqtop
 - Agda : cabal -> Agda (https://develop.spacemacs.org/layers/+lang/agda/README.html#agda)
