@@ -172,6 +172,7 @@
   (emacs-lisp-mode/user-config)
   (racket-mode/user-config)
   (clojure-mode/user-config)
+  (coq-mode/user-config)
   )
 
 (defun emacs-lisp-mode/user-config ()
@@ -215,4 +216,10 @@
   "clojure major mode configs collection"
   ;; enable smartparens-mode
   (add-hook 'clojure-mode-hook #'smartparens-mode)
+  )
+
+(defun coq-mode/user-config ()
+  "coq major mode configs collection"
+  ;; use 2 view
+  (setq proof-three-window-enable nil)
   )
