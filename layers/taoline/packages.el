@@ -34,6 +34,9 @@
 
 (defun taoline/init-taoline ()
   (use-package taoline
+    :custom
+    (taoline-show-directory nil)
+    (taoline-show-buffer-name nil)
     :config (taoline-mode t)))
 
 ;;; packages.el ends here
