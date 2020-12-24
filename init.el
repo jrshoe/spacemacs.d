@@ -213,6 +213,9 @@
   (add-hook 'racket-mode-hook #'smartparens-mode)
   ;; enable paren-face
   (add-hook 'racket-mode-hook #'paren-face-mode)
+  (add-hook 'racket-mode-hook #'(lambda ()
+                                  (make-face-unitalic 'font-lock-builtin-face)
+                                  (make-face-unitalic 'font-lock-comment-face)))
   )
 
 (defun clojure-mode/user-config ()
