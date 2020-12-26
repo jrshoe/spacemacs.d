@@ -1,3 +1,5 @@
+I use *spacemacs-base* to exclude non-useful pkgs
+
 Usage:
 - Average Haskell Programming
 - Average Racekt Programming
