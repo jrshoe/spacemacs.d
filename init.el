@@ -75,11 +75,11 @@
    dotspacemacs-new-empty-buffer-major-mode 'text-mode
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(tao-yang)
+   dotspacemacs-themes '(zenburn)
    dotspacemacs-mode-line-theme 'vanilla
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12.0
+                               :size 10.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -142,7 +142,7 @@
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
   ;; racket-program bin
-  (setq racket-program (shell-command-to-string "which racket"))
+  (setq racket-program "/usr/bin/racket")
   ;; coq
   (setq coq-compile-before-require 't)
   (setq coq-diffs 'removed)
@@ -150,6 +150,7 @@
   (setq exec-path (append exec-path '("~/.cabal/bin")))
   ;; tao theme
   (setq tao-theme-use-sepia nil)
+  (setq tao-theme-use-boxes nil)
   ;; load-path
   (load-file (expand-file-name ".spacemacs.d/utils/prettify-utils.el" user-home-directory))
   (load-file (expand-file-name ".spacemacs.d/utils/prettify-redex.el" user-home-directory))
@@ -176,6 +177,11 @@
   (coq-mode/user-config)
   ;; evil-smartparens
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+  ;; coq
+  (add-hook 'coq-mode-hook (lambda ()
+                             (set-face-attribute 'coq-button-face nil
+                                                 :background "#3F3F3F")
+                             ))
   )
 
 (defun emacs-lisp-mode/user-config ()
@@ -213,6 +219,7 @@
   (add-hook 'racket-mode-hook #'smartparens-mode)
   ;; enable paren-face
   (add-hook 'racket-mode-hook #'paren-face-mode)
+  ;; disable italic
   (add-hook 'racket-mode-hook #'(lambda ()
                                   (make-face-unitalic 'font-lock-builtin-face)
                                   (make-face-unitalic 'font-lock-comment-face)))
