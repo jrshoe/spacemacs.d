@@ -142,7 +142,10 @@
   (unless (file-exists-p custom-file)
     (write-region "" nil custom-file))
   ;; racket-program bin
-  (setq racket-program "/usr/bin/racket")
+  (when (eq system-type 'darwin)
+    (setq racket-program "/usr/local/bin/racket"))
+  (when (eq system-type 'gnu/linux)
+    (setq racket-program "/usr/bin/racket"))
   ;; coq
   (setq coq-compile-before-require 't)
   (setq coq-diffs 'removed)
