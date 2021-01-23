@@ -130,13 +130,20 @@
   (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
-  ;; mirror repo
-  ;; (setq configuration-layer-elpa-archives
-  ;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-  ;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
-  ;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-  ;; fringe
-  ;; (fringe-mode 0)
+  ;; util function
+  (defun window-split-toggle ()
+    "Toggle between horizontal and vertical split with two windows."
+    (interactive)
+    (if (> (length (window-list)) 2)
+        (error "Can't toggle with more than 2 windows!")
+      (let ((func (if (window-full-height-p)
+                      #'split-window-vertically
+                    #'split-window-horizontally)))
+        (delete-other-windows)
+        (funcall func)
+        (save-selected-window
+          (other-window 1)
+          (switch-to-buffer (other-buffer))))))
   ;; custom file generation
   (setq custom-file "~/.spacemacs.d/custom.el")
   (unless (file-exists-p custom-file)
@@ -151,9 +158,6 @@
   (setq coq-diffs 'removed)
   ;; for cabal
   (setq exec-path (append exec-path '("~/.cabal/bin")))
-  ;; tao theme
-  (setq tao-theme-use-sepia nil)
-  (setq tao-theme-use-boxes nil)
   ;; load-path
   (load-file (expand-file-name ".spacemacs.d/utils/prettify-utils.el" user-home-directory))
   (load-file (expand-file-name ".spacemacs.d/utils/prettify-redex.el" user-home-directory))
@@ -165,9 +169,7 @@
 (defun dotspacemacs/user-config ()
   ;; transparency
   (setq default-frame-alist
-        '(
-          (ns-transparent-titlebar . t)
-          ;;(ns-appearance . dark)
+        '((ns-transparent-titlebar . t)
           (alpha . 99)))
   ;; paren-face
   (global-paren-face-mode)
@@ -183,8 +185,7 @@
   ;; coq
   (add-hook 'coq-mode-hook (lambda ()
                              (set-face-attribute 'coq-button-face nil
-                                                 :background "#3F3F3F")
-                             ))
+                                                 :background "#3F3F3F")))
   )
 
 (defun emacs-lisp-mode/user-config ()
@@ -199,8 +200,7 @@
   ;; (require 'prettify-utils)
   (defun prettify-set ()
     (setq prettify-symbols-alist
-          prettify-redex-alist
-           ))
+          prettify-redex-alist))
   ;; step1 : set mode
   (add-hook 'racket-mode-hook #'prettify-symbols-mode)
   (add-hook 'racket-repl-mode-hook #'prettify-symbols-mode)
@@ -222,10 +222,6 @@
   (add-hook 'racket-mode-hook #'smartparens-mode)
   ;; enable paren-face
   (add-hook 'racket-mode-hook #'paren-face-mode)
-  ;; disable italic
-  (add-hook 'racket-mode-hook #'(lambda ()
-                                  (make-face-unitalic 'font-lock-builtin-face)
-                                  (make-face-unitalic 'font-lock-comment-face)))
   )
 
 (defun clojure-mode/user-config ()
