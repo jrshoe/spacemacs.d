@@ -186,6 +186,10 @@
   (add-hook 'coq-mode-hook (lambda ()
                              (set-face-attribute 'coq-button-face nil
                                                  :background "#3F3F3F")))
+  (add-hook 'coq-mode-hook (lambda ()
+                             (set-face-attribute 'coq-solve-tactics-face nil
+                                                 :foreground "#9370db")))
+
   )
 
 (defun emacs-lisp-mode/user-config ()
