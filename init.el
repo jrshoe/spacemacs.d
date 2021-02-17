@@ -31,7 +31,8 @@
                       auto-completion-enable-snippets-in-popup t)
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
-     ivy
+     (ivy :variables
+          ivy-enable-advanced-buffer-information t)
      git
      (version-control :variables
                       version-control-global-margin t)
