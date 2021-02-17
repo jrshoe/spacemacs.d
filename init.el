@@ -204,6 +204,11 @@
   (racket-xp-mode)
   ;; disable racket-mode postip
   (setq racket-show-functions '(racket-show-echo-area))
+  ;; show-paren-mode
+  (show-paren-mode)
+  (setq show-paren-style 'expression)
+  (set-face-attribute 'show-paren-match-expression nil
+                      :background "#444155")
   )
 
 (defun coq-mode/user-init ()
