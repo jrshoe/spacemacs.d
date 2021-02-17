@@ -45,7 +45,7 @@
      ;; (agda :variables agda-mode-path (shell-command-to-string "agda-mode locate"))
      ;; local
      )
-   dotspacemacs-additional-packages '(paren-face evil-smartparens)
+   dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
                                     ;; spacemacs-modeline
@@ -75,11 +75,11 @@
    dotspacemacs-new-empty-buffer-major-mode 'text-mode
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(zenburn)
+   dotspacemacs-themes '(spacemacs-dark)
    dotspacemacs-mode-line-theme 'vanilla
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
+   dotspacemacs-default-font '("Cascadia Code"
+                               :size 14.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -113,7 +113,7 @@
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-enable-server nil
@@ -171,8 +171,6 @@
   (setq default-frame-alist
         '((ns-transparent-titlebar . t)
           (alpha . 99)))
-  ;; paren-face
-  (global-paren-face-mode)
   ;; maximize frame at startup
   (toggle-frame-maximized)
   ;; langs setup
@@ -185,7 +183,7 @@
   ;; coq
   (add-hook 'coq-mode-hook (lambda ()
                              (set-face-attribute 'coq-button-face nil
-                                                 :background "#3F3F3F")))
+                                                 :background "#262626")))
   (add-hook 'coq-mode-hook (lambda ()
                              (set-face-attribute 'coq-solve-tactics-face nil
                                                  :foreground "#9370db")))
