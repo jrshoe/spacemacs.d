@@ -15,11 +15,12 @@
      (spacemacs-editing-visual :packages
                                hide-comnt
                                hl-anything
-                               highlight-numbers
-                               ;; highlight-parentheses
-                               )
+                               highlight-numbers)
      (spacemacs-misc :packages
                      dumb-jump)
+     (spacemacs-visual :packages
+                       ansi-colors
+                       hl-todo)
      taoline
      spacemacs-project
      ;; basic
@@ -209,7 +210,7 @@
   (setq show-paren-style 'expression)
   (set-face-attribute 'show-paren-match-expression nil
                       :background "#444155")
-  )
+  (aggressive-indent-mode))
 
 (defun coq-mode/user-init ()
   "coq major mode inits collection"
@@ -226,12 +227,10 @@
   (set-face-attribute 'coq-button-face nil
                       :background "#292b2e")
   (set-face-attribute 'coq-solve-tactics-face nil
-                      :foreground "#9370db")
-  )
+                      :foreground "#9370db"))
 
 (defun haskell-mode/user-init ()
   ;; for cabal
   (setq exec-path (append exec-path '("~/.cabal/bin")))
   ;; for ghcup
-  (setq exec-path (append exec-path '("~/.ghcup/bin")))
-  )
+  (setq exec-path (append exec-path '("~/.ghcup/bin"))))
