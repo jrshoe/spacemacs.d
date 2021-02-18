@@ -4,7 +4,7 @@
 
 * Emacs users who try learn to make Spacemacs pretty neat without losing core functionalities.
 * Vimmers who write a lot of Coq code per day and want to get rid of CoqIDE.
-* Racketeers who want better PLT Redex coding experience.
+* Lispers who want better Lisp or Redex coding experience.
 
 ## Screenshots
 
