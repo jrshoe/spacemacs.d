@@ -166,7 +166,8 @@ sent to `add-text-properties'.")
 (defun taoline-default-settings-on ()
   "Some default settings that works well with taoline."
   (setq window-divider-default-bottom-width 4
-        window-divider-default-places (quote bottom-only))
+        window-divider-default-right-width 4
+        window-divider-default-places (quote t))
   (set-face-attribute 'window-divider nil
                       :foreground "MediumPurple4")
   (set-face-attribute 'window-divider-first-pixel nil
