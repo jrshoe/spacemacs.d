@@ -1,22 +1,16 @@
-# Spacemacs for Programming Languages Research
+# Emacs for Programming Languages Research
 
-## Philosophy
+## Who can benefit from this code?
 
-I use `spacemacs-base` to make this config pretty neat.
+* Emacs users who try learn to make Spacemacs pretty neat without losing core functionalities.
+* Vimmers who write a lot of Coq code per day and want to get rid of CoqIDE.
+* Racketeers who want better PLT Redex coding experience.
 
 ## Screenshots
 
 ![Coq Proof Assistant](imgs/coq.png)
 
 ![PLT Redex](imgs/redex.png)
-
-## Usage
-
-- Average Haskell Programming
-- Average Racekt Programming
-- Coq Proof Assisant
-- PLT Redex Model
-- Ott Model
 
 ## Dependencies:
 
