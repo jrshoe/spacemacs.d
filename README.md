@@ -1,17 +1,26 @@
-I use *spacemacs-base* to exclude non-useful pkgs
+# Spacemacs for Programming Languages Research
 
-Usage:
+## Philosophy
+
+I use `spacemacs-base` to make this config pretty neat.
+
+## Screenshots
+
+![Coq Proof Assistant](imgs/coq.png)
+
+![PLT Redex](imgs/redex.png)
+
+## Usage
+
 - Average Haskell Programming
 - Average Racekt Programming
-- Average Clojure Programming
 - Coq Proof Assisant
-- Agda Proof Assisant
 - PLT Redex Model
 - Ott Model
 
-Dependencies:
+## Dependencies:
+
 - Haskell : ghcup -> cabal, stack, ghc (https://develop.spacemacs.org/layers/+lang/haskell/README.html#dependencies)
 - Coq : brew -> coqtop
-- Agda : cabal -> Agda (https://develop.spacemacs.org/layers/+lang/agda/README.html#agda)
 - Racket/Redex : brew -> racket, raco -> drracket, raco -> redex
 - Ott : opam -> ott
