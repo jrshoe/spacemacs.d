@@ -201,6 +201,9 @@
   (evil-define-key 'normal haskell-mode-map
     "o" 'haskell-evil-open-below
     "O" 'haskell-evil-open-above)
+
+  ;; disable tip
+  (setq haskell-process-show-debug-tips nil)
   )
 
 (defun emacs-lisp-mode/user-config ()
