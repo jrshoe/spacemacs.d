@@ -120,7 +120,7 @@
    dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-frame-title-format "%a"
+   dotspacemacs-frame-title-format ""
    dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup 'all
    dotspacemacs-zone-out-when-idle nil
@@ -204,6 +204,7 @@
 
   ;; disable tip
   (setq haskell-process-show-debug-tips nil)
+  (aggressive-indent-mode)
   )
 
 (defun emacs-lisp-mode/user-config ()
