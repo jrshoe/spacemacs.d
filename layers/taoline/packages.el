@@ -36,7 +36,7 @@
   (use-package taoline
     :custom
     (taoline-show-directory nil)
-    (taoline-show-buffer-name nil)
+    (taoline-show-buffer-name t)
     :config (taoline-mode t)))
 
 ;;; packages.el ends here
