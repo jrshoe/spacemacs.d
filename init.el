@@ -16,8 +16,7 @@
                                hide-comnt
                                hl-anything
                                highlight-numbers)
-     (spacemacs-misc :packages
-                     dumb-jump)
+     spacemacs-misc
      (spacemacs-visual :packages
                        ansi-colors
                        hl-todo)
@@ -121,7 +120,7 @@
    dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-frame-title-format "%a"
+   dotspacemacs-frame-title-format ""
    dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup 'all
    dotspacemacs-zone-out-when-idle nil
@@ -178,6 +177,34 @@
   (add-hook 'racket-mode-hook (lambda () (racket-mode/user-config)))
   (add-hook 'racket-repl-mode-hook (lambda () (racket-mode/user-config)))
   (add-hook 'coq-mode-hook (lambda () (coq-mode/user-config)))
+  (add-hook 'haskell-mode-hook (lambda () (haskell-mode/user-config)))
+  )
+
+(defun haskell-mode/user-config ()
+  "haskell major mode configs collection"
+  ;; This changes the evil "O" and "o" keys for haskell-mode to make sure that
+  ;; indentation is done correctly. See
+  ;; https://github.com/haskell/haskell-mode/issues/1265#issuecomment-252492026.
+  (defun haskell-evil-open-above ()
+    (interactive)
+    (evil-digit-argument-or-evil-beginning-of-line)
+    (haskell-indentation-newline-and-indent)
+    (evil-previous-line)
+    (haskell-indentation-indent-line)
+    (evil-append-line nil))
+
+  (defun haskell-evil-open-below ()
+    (interactive)
+    (evil-append-line nil)
+    (haskell-indentation-newline-and-indent))
+
+  (evil-define-key 'normal haskell-mode-map
+    "o" 'haskell-evil-open-below
+    "O" 'haskell-evil-open-above)
+
+  ;; disable tip
+  (setq haskell-process-show-debug-tips nil)
+  (aggressive-indent-mode)
   )
 
 (defun emacs-lisp-mode/user-config ()
