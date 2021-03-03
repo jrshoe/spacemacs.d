@@ -204,7 +204,6 @@
 
   ;; disable tip
   (setq haskell-process-show-debug-tips nil)
-  (aggressive-indent-mode)
   )
 
 (defun emacs-lisp-mode/user-config ()
