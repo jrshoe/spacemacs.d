@@ -120,7 +120,7 @@
    dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-frame-title-format ""
+   dotspacemacs-frame-title-format (if (equal system-type 'gnu/linux) "%t >> %b" "")
    dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup 'all
    dotspacemacs-zone-out-when-idle nil
