@@ -37,6 +37,7 @@
     :custom
     (taoline-show-directory nil)
     (taoline-show-buffer-name t)
+    (taoline-show-git-branch t)
     :config (taoline-mode t)))
 
 ;;; packages.el ends here
