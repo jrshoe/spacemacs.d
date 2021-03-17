@@ -20,6 +20,7 @@
      (spacemacs-visual :packages
                        ansi-colors
                        hl-todo)
+     spacemacs-layouts
      taoline
      spacemacs-project
      ;; basic
@@ -130,20 +131,6 @@
   (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
-  ;; util function
-  (defun window-split-toggle ()
-    "Toggle between horizontal and vertical split with two windows."
-    (interactive)
-    (if (> (length (window-list)) 2)
-        (error "Can't toggle with more than 2 windows!")
-      (let ((func (if (window-full-height-p)
-                      #'split-window-vertically
-                    #'split-window-horizontally)))
-        (delete-other-windows)
-        (funcall func)
-        (save-selected-window
-          (other-window 1)
-          (switch-to-buffer (other-buffer))))))
   ;; custom file generation
   (setq custom-file "~/.spacemacs.d/custom.el")
   (unless (file-exists-p custom-file)
@@ -204,6 +191,10 @@
 
   ;; disable tip
   (setq haskell-process-show-debug-tips nil)
+  ;; hungry delete
+  (hungry-delete-mode)
+  ;; keybindings
+  (global-keys-preference)
   )
 
 (defun emacs-lisp-mode/user-config ()
@@ -257,7 +248,14 @@
                       :foreground "#9370db"))
 
 (defun haskell-mode/user-init ()
+  "haskell major mode inits"
   ;; for cabal
   (setq exec-path (append exec-path '("~/.cabal/bin")))
   ;; for ghcup
   (setq exec-path (append exec-path '("~/.ghcup/bin"))))
+
+(defun global-keys-preference ()
+  "my favored keybindings"
+  ;; SPC k w
+  (spacemacs/set-leader-keys "kw" 'sp-wrap-round)
+  )
